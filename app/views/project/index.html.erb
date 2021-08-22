@@ -1,0 +1,296 @@
+
+<div class="swiper-wrapper" style="height: 421px; transform: translate3d(-1110px, 0px, 0px); transition-duration: 0ms">
+  <% @projects.each do |project| %>
+    <div
+      class="swiper-slide swiper-slide-active"
+      style="background-color: rgb(200, 171, 175); width: 1110px"
+      data-category="<%= project.title%>"
+      data-theme="light"
+      data-hash="mg1"
+      data-swiper-slide-index="0"
+    >
+      <div class="slider__slide-background" style="background-color: <%= project.color%>"></div>
+      <figure class="slider__image">
+        <picture class="slider__image__picture">
+          <% project.project_images.order('id DESC').each do |project_image| %>
+          <% if project_image.img_type == "S"%>
+            <source srcset="<%= rails_blob_url(project_image.image) %>" media="(max-width: 460px)" />
+          <% end %>
+          
+          <% if project_image.img_type == "M"%>
+            <source
+              srcset="<%= rails_blob_url(project_image.image) %>"
+              media="(min-width: 461px) and (max-width: 700px)"
+            />
+          <% end %>
+
+          <% if project_image.img_type == "L"%>
+            <source srcset="<%= rails_blob_url(project_image.image) %>" media="(min-width: 701px) and (max-width: 960px)" />
+          <% end %>
+
+          <% if project_image.img_type == "XL"%>
+            <%= image_tag(rails_blob_url(project_image.image), alt: "Example Image", class: "slider__image__image")%>
+          <% end %>
+
+          <% end %>
+        </picture>
+        <figcaption class="slider__image__caption"><%= project.company_name %></figcaption>
+      </figure>
+    </div>
+  <% end %>
+  
+
+
+
+
+  <!-- 
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(217, 199, 203); width: 1110px"
+    data-category="Web Design, Mobile"
+    data-theme="light"
+    data-hash="mg2"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #eadfd2"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "1-mgmobile/mgmobile_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "1-mgmobile/mgmobile_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "1-mgmobile/mgmobile_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("1-mgmobile/mgmobile.jpg", alt: "Website Design", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(190, 200, 212); width: 1110px"
+    data-category="Magazine layout"
+    data-theme="light"
+    data-hash="magazinelayout"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #bec8d4"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "2-ml/ml_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "2-ml/ml_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source srcset="<%= asset_path "2-ml/ml_lap.jpg" %>" media="(min-width: 701px) and (max-width: 960px)" />
+        <%=image_tag("2-ml/ml.jpg", alt: "Magazine layout", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(199, 179, 180); width: 1110px"
+    data-category="Editorial"
+    data-theme="light"
+    data-hash="editorial"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #c7b3b4"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "7-bond/bond_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "7-bond/bond_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "7-bond/bond_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("7-bond/bond.jpg", alt: "Editorial", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(186, 181, 175); width: 1110px"
+    data-category="Book design"
+    data-theme="light"
+    data-hash="invisiblechange1"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #bab5af"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "5-inchange/inchange_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "5-inchange/inchange_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "5-inchange/inchange_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("5-inchange/inchange.jpg", alt: "Book design", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(229, 221, 218); width: 1110px"
+    data-category="Book layout"
+    data-theme="light"
+    data-hash="booklayout"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #e5ddda"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "11-unicef/unicef_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "11-unicef/unicef_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "11-unicef/unicef_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("11-unicef/unicef.jpg", alt: "Book layout", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Emerson Wadojowiz Design Studio</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(202, 219, 219); width: 1110px"
+    data-category="Poster series"
+    data-theme="light"
+    data-hash="posterseries"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #cadbdb"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "8-posterseries/posterseries_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "8-posterseries/posterseries_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "8-posterseries/posterseries_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("8-posterseries/posterseries.jpg", alt: "Poster series", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(255, 239, 239); width: 1110px"
+    data-category="Editorial"
+    data-theme="light"
+    data-hash="ss"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #ffefef"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "10-lookbook/lookbook_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "10-lookbook/lookbook_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "10-lookbook/lookbook_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("10-lookbook/lookbook.jpg", alt: "Website Design", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(203, 223, 224); width: 1110px"
+    data-category="Stationary"
+    data-theme="light"
+    data-hash="stationary1"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #cbdfe0"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "12-postcard/postcard_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "12-postcard/postcard_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "12-postcard/postcard_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("12-postcard/postcard.jpg", alt: "Art Direction", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(231, 214, 221); width: 1110px"
+    data-category="Art direction"
+    data-theme="light"
+    data-hash="artdirection"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #e7d6dd"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "14-artdirection/artdirection_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "14-artdirection/artdirection_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "14-artdirection/artdirection_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("14-artdirection/artdirection.jpg", alt: "Art direction", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">
+        Collaborated and Designed at Black and Black Creative
+      </figcaption>
+    </figure>
+  </div>
+  <div
+    class="swiper-slide swiper-slide-active"
+    style="background-color: rgb(203, 195, 206); width: 1110px"
+    data-category="Magazine ad layout"
+    data-theme="light"
+    data-hash="sidneygarber"
+    data-swiper-slide-index="0"
+  >
+    <div class="slider__slide-background" style="background-color: #cbc3ce"></div>
+    <figure class="slider__image">
+      <picture class="slider__image__picture">
+        <source srcset="<%= asset_path "13-sidney/sidney_palm.jpg" %>" media="(max-width: 460px)" />
+        <source
+          srcset="<%= asset_path "13-sidney/sidney_hand.jpg" %>"
+          media="(min-width: 461px) and (max-width: 700px)"
+        />
+        <source
+          srcset="<%= asset_path "13-sidney/sidney_lap.jpg" %>"
+          media="(min-width: 701px) and (max-width: 960px)"
+        />
+        <%=image_tag("13-sidney/sidney.jpg", alt: "Magazine ad layout", class: "slider__image__image")%>
+      </picture>
+      <figcaption class="slider__image__caption">Designed at Black and Black Creative</figcaption>
+    </figure>
+  </div> -->
+</div>
